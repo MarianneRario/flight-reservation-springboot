@@ -17,7 +17,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass // acts as a parent class to other entities
 public class AbstractEntity {
     @Id // always put this mark in primary key such as id
-    @GeneratedValue(strategy = GenerationType.AUTO) // means that it auto generates
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // means that it auto generates
     private Long id;
 
     public Long getId() {
