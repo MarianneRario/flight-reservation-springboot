@@ -1,0 +1,35 @@
+The model classes such as User, Passenger, Reservation, and Flight used to have an ID as one of the field that looks like this:
+
+@Id
+@GeneratedValue(strategy = GenerationType.AUTO)
+private Long id;
+
+But, for our code to be clean, we must not repeat exact things over and over again.
+So, to solve this dilemma, we move this code to a parent class named AbstractEntity.
+In AbstractEntity, we make this class parent class to other entities by putting a @MappedSuperclass annotation
+so if we extend this class, we will have the fields that we implemented in here and inherit it to the model classes
+
+<hr>
+
+The relationship between a Reservation and a Passenger and Flight is One-to-One.
+Every reservation will have a passenger and a flight
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

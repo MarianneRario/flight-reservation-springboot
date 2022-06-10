@@ -1,13 +1,16 @@
 package com.rariom.flightreservation.flightreservation.models;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Reservation extends AbstractEntity{
 
     private boolean checkedIn;
     private int luggageQuantity;
+    @OneToOne
     private Passenger passengerId; // fk relationship
+    @OneToOne
     private Flight flightId; // fk relationship
 
 
