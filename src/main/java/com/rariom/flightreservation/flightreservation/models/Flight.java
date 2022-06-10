@@ -1,10 +1,12 @@
 package com.rariom.flightreservation.flightreservation.models;
 
+import javax.persistence.Entity;
 import java.sql.Timestamp;
 import java.util.Date;
 
-public class Flight {
-    private Long id;
+@Entity
+public class Flight extends AbstractEntity{
+
     private String flightNumber;
     private String operatingAirlines;
     private String departureCity;
@@ -12,13 +14,6 @@ public class Flight {
     private Date departureDate;
     private Timestamp estimatedDepartureTime;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFlightNumber() {
         return flightNumber;

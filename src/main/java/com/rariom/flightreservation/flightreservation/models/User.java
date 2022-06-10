@@ -1,19 +1,14 @@
 package com.rariom.flightreservation.flightreservation.models;
 
-public class User {
-    private Long id;
+import javax.persistence.Entity;
+
+@Entity //  specifies that the class is an entity and is mapped to a database table
+public class User extends AbstractEntity{
+
     private String firstName;
     private String lastName;
     private String email;
     private String password;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

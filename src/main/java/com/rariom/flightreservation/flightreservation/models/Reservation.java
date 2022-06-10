@@ -1,19 +1,15 @@
 package com.rariom.flightreservation.flightreservation.models;
 
-public class Reservation {
-    private Long id;
+import javax.persistence.Entity;
+
+@Entity
+public class Reservation extends AbstractEntity{
+
     private boolean checkedIn;
     private int luggageQuantity;
     private Passenger passengerId; // fk relationship
     private Flight flightId; // fk relationship
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public boolean isCheckedIn() {
         return checkedIn;
