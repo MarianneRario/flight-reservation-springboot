@@ -1,11 +1,15 @@
 package com.rariom.flightreservation.flightreservation.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity //  specifies that the class is an entity and is mapped to a database table
 public class User extends AbstractEntity{
 
+    @Column(name="first_name")
     private String firstName;
+    @Column(name="last_name")
     private String lastName;
     private String email;
     private String password;

@@ -8,7 +8,8 @@ public class UserController {
 
     // method that will display the registration page to the user
     @RequestMapping(path = "/register")
-    protected String showRegistrationPage(){
+    public String showRegistrationPage(){
         return "login/registerUser"; // render a view (registerUser.html)
     }
+
 }
