@@ -6,4 +6,15 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    /**
+     * @param email
+     * @return single user
+     *
+     * automatically, spring jpa will generate a query for us
+     *
+     * SELECT * FROM USER WHERE EMAIL = email
+     *
+     */
+    User findByEmail(String email);
 }
