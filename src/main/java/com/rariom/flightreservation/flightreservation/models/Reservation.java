@@ -9,9 +9,9 @@ public class Reservation extends AbstractEntity{
     private boolean checkedIn;
     private int luggageQuantity;
     @OneToOne
-    private Passenger passengerId; // fk relationship
+    private Passenger passenger; // fk relationship
     @OneToOne
-    private Flight flightId; // fk relationship
+    private Flight flight; // fk relationship
 
 
     public boolean isCheckedIn() {
@@ -30,19 +30,19 @@ public class Reservation extends AbstractEntity{
         this.luggageQuantity = luggageQuantity;
     }
 
-    public Passenger getPassengerId() {
-        return passengerId;
+    public Passenger getPassenger() {
+        return passenger;
     }
 
-    public void setPassengerId(Passenger passengerId) {
-        this.passengerId = passengerId;
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
     }
 
-    public Flight getFlightId() {
-        return flightId;
+    public Flight getFlight() {
+        return flight;
     }
 
-    public void setFlightId(Flight flightId) {
-        this.flightId = flightId;
+    public void setFlight(Flight flight) {
+        this.flight = flight;
     }
 }
