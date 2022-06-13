@@ -24,16 +24,12 @@ public class FlightController {
     public String findFlight(@RequestParam("from") String from,
                              @RequestParam("to") String to,
                              @RequestParam("departureDate")
-                                 @DateTimeFormat(pattern = "yyyy-dd-mm") Date departureDate,
+                                 @DateTimeFormat(pattern = "dd-MM-yyyy") Date departureDate,
                              ModelMap modelMap){
 
         // once entered, it will search for the flight using flight repository
-
         List<Flight> flights = flightRepository.findFlights(from, to, departureDate);
-        System.out.println("OBJ: "+ Arrays.toString(flights.toArray()));
         modelMap.addAttribute("flights", flights);
-        System.out.println("Departure Date: " + departureDate);
         return "displayFlights"; // return the displayFlights.html view
-
     }
 }
