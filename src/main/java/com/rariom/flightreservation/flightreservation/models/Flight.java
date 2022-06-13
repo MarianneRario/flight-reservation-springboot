@@ -1,6 +1,11 @@
 package com.rariom.flightreservation.flightreservation.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -11,6 +16,9 @@ public class Flight extends AbstractEntity{
     private String operatingAirlines;
     private String departureCity;
     private String arrivalCity;
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-dd-mm")
+    @Column(name="DATE_OF_DEPARTURE")
     private Date departureDate;
     private Timestamp estimatedDepartureTime;
 

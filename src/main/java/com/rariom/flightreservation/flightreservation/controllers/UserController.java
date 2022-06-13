@@ -22,7 +22,7 @@ public class UserController {
         return "login/registerUser"; // render a view (registerUser.html) inside login dir
     }
 
-    @RequestMapping(path = "/registered", method = RequestMethod.POST)
+    @RequestMapping(path = "/registered", method = RequestMethod.POST) // we should create a card here saying that the user successfully registered
     protected String registerUser(@ModelAttribute("user") User user, ModelMap modelMap ){
         // we need a user repository to save the user in the database (inject the dependency "User Repository")
         userRepository.save(user);
@@ -53,5 +53,9 @@ public class UserController {
         }
         return "login/loginUser"; // if the user enters incorrect credentials, we will redirect the user to login.html view
     }
+
+
+
+
 
 }
