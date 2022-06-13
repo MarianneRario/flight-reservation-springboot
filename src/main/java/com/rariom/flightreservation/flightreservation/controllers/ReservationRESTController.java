@@ -4,14 +4,12 @@ import com.rariom.flightreservation.flightreservation.dataTransferObject.Reserva
 import com.rariom.flightreservation.flightreservation.models.Reservation;
 import com.rariom.flightreservation.flightreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
 @RestController
+@CrossOrigin // makes different applications running on different domains/ports can communicate with this controller
 public class ReservationRESTController {
 
     @Autowired
