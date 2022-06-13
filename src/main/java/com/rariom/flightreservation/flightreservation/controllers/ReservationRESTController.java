@@ -5,6 +5,7 @@ import com.rariom.flightreservation.flightreservation.models.Reservation;
 import com.rariom.flightreservation.flightreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ public class ReservationRESTController {
 
     // we are passing ReservationUpdateRequest request (a class) because we don't want to pass the entire Reservation to this update method
     @RequestMapping("/reservations")
-    public Reservation updateReservation(ReservationUpdateRequest request){
+    public Reservation updateReservation(@RequestBody ReservationUpdateRequest request){
         // retrieve the reservation from the database and then perform an update
         Optional<Reservation> reservation = reservationRepository.findById(request.getId());
 
