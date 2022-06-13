@@ -9,6 +9,7 @@ import com.rariom.flightreservation.flightreservation.repository.PassengerReposi
 import com.rariom.flightreservation.flightreservation.repository.ReservationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 /**
  * This class contains business logic for reservation controller

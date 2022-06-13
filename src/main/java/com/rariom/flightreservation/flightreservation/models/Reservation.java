@@ -1,5 +1,6 @@
 package com.rariom.flightreservation.flightreservation.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
@@ -7,6 +8,7 @@ import javax.persistence.OneToOne;
 public class Reservation extends AbstractEntity{
 
     private boolean checkedIn;
+    @Column(name = "NUMBER_OF_BAGS")
     private int luggageQuantity;
     @OneToOne
     private Passenger passenger; // fk relationship
