@@ -1,5 +1,6 @@
 package com.rariom.flightreservation.flightreservation.controllers;
 
+import com.rariom.flightreservation.flightreservation.dataTransferObject.ReservationRequest;
 import com.rariom.flightreservation.flightreservation.models.Flight;
 import com.rariom.flightreservation.flightreservation.repository.FlightRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,11 @@ public class ReservationController {
         modelMap.addAttribute("flight", flight);
         return "completeReservation"; // render the view
 
+    }
+
+    @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
+    protected String completeReservation(ReservationRequest request){
+
+        return "";
     }
 }
