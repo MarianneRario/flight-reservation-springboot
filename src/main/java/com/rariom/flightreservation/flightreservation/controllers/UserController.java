@@ -17,7 +17,7 @@ public class UserController {
     private UserRepository userRepository; // inject this dependency in this class
 
     // method that will display the registration page to the user
-    @RequestMapping(path = "/register")
+    @RequestMapping(path = "/registerPage")
     protected String showRegistrationPage(){
         return "login/registerUser"; // render a view (registerUser.html) inside login dir
     }
@@ -30,7 +30,7 @@ public class UserController {
 
         return "login/registerUser"; // render a view (loginUser.html) inside login dir
     }
-    @RequestMapping("/")
+    @RequestMapping("/loginPage")
     protected String showLoginPage(){
         return "login/loginUser";
     }
