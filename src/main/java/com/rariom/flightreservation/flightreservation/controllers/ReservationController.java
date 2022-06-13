@@ -2,7 +2,9 @@ package com.rariom.flightreservation.flightreservation.controllers;
 
 import com.rariom.flightreservation.flightreservation.dataTransferObject.ReservationRequest;
 import com.rariom.flightreservation.flightreservation.models.Flight;
+import com.rariom.flightreservation.flightreservation.models.Reservation;
 import com.rariom.flightreservation.flightreservation.repository.FlightRepository;
+import com.rariom.flightreservation.flightreservation.services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +20,10 @@ public class ReservationController {
     @Autowired
     private FlightRepository flightRepository;
 
+    // inject the ReservationService
+    @Autowired
+    private ReservationService reservationService;
+
     // url came from displayFlights.html
     // (<td><a th:href="@{'showCompleteReservation?flightId='+${flight.id}}">Select</a></td>)
     @RequestMapping(path = "/showCompleteReservation")
@@ -31,9 +37,12 @@ public class ReservationController {
     }
 
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
-    protected String completeReservation(ReservationRequest request){
+    protected String completeReservation(ReservationRequest request, ModelMap modelMap){
 
+        Reservation reservation = reservationService.bookFlight(request);
+        modelMap.addAttribute("msg", "Reservation with id: "
+                + reservation.getId() + " is successfully saved");
 
-        return "";
+        return "reservationConfirmation";
     }
 }
