@@ -29,18 +29,11 @@ public class ReservationRESTController {
     @RequestMapping("/reservations")
     public Reservation updateReservation(@RequestBody ReservationUpdateRequest request){
         // retrieve the reservation from the database and then perform an update
-        Optional<Reservation> reservation = reservationRepository.findById(request.getId());
+        Reservation reservation = reservationRepository.findReservationById(request.getId());
+        reservation.setLuggageQuantity(request.getLuggageQuantity());
+        reservation.setCheckedIn(request.isCheckedIn());
 
-        if(reservation.isPresent()){
-
-            Reservation updateReservation = reservation.get();
-            updateReservation.setLuggageQuantity(request.getNumberOfBags());
-            updateReservation.setCheckedIn(request.getCheckIn());
-
-            // save the updated reservation
-             return reservationRepository.save(updateReservation);
-        }
-
-        return null;
+        // save the updated reservation
+        return reservationRepository.save(reservation);
     }
 }

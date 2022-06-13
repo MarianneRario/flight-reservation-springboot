@@ -2,8 +2,8 @@ package com.rariom.flightreservation.flightreservation.dataTransferObject;
 
 public class ReservationUpdateRequest {
     private Long id;
-    private Boolean checkIn;
-    private int numberOfBags;
+    private boolean checkedIn;
+    private int luggageQuantity;
 
     public Long getId() {
         return id;
@@ -13,19 +13,19 @@ public class ReservationUpdateRequest {
         this.id = id;
     }
 
-    public Boolean getCheckIn() {
-        return checkIn;
+    public boolean isCheckedIn() {
+        return checkedIn;
     }
 
-    public void setCheckIn(Boolean checkIn) {
-        this.checkIn = checkIn;
+    public void setCheckedIn(boolean checkedIn) {
+        this.checkedIn = checkedIn;
     }
 
-    public int getNumberOfBags() {
-        return numberOfBags;
+    public int getLuggageQuantity() {
+        return luggageQuantity;
     }
 
-    public void setNumberOfBags(int numberOfBags) {
-        this.numberOfBags = numberOfBags;
+    public void setLuggageQuantity(int luggageQuantity) {
+        this.luggageQuantity = luggageQuantity;
     }
 }
