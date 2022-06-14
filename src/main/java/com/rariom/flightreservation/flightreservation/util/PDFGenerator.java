@@ -1,16 +1,12 @@
 package com.rariom.flightreservation.flightreservation.util;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.rariom.flightreservation.flightreservation.models.Reservation;
 import org.springframework.stereotype.Component;
-
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
 @Component // mark a utility class with @Component
