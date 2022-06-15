@@ -7,6 +7,8 @@ import com.rariom.flightreservation.flightreservation.models.Reservation;
 import com.rariom.flightreservation.flightreservation.repository.FlightRepository;
 import com.rariom.flightreservation.flightreservation.repository.PassengerRepository;
 import com.rariom.flightreservation.flightreservation.repository.ReservationRepository;
+import com.rariom.flightreservation.flightreservation.util.EmailUtil;
+import com.rariom.flightreservation.flightreservation.util.PDFGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,13 @@ public class ReservationServiceImpl implements ReservationService{
     @Autowired
     private ReservationRepository reservationRepository;
 
+    // inject the PDFGenerator class
+    @Autowired
+    private PDFGenerator pdfGenerator;
+
+    // inject the Email utility
+    @Autowired
+    private EmailUtil emailUtil;
 
     @Override
     public Reservation bookFlight(ReservationRequest request) {
@@ -56,6 +65,11 @@ public class ReservationServiceImpl implements ReservationService{
         // inject the reservation object to the repository dependency
         Reservation savedReservation = reservationRepository.save(reservation);
 
+        // once you finished saving the reservation, generate an itinerary from savedReservation
+        String filepath = "/Users/mapletree/Desktop/ab2b/reservation_pdf/reservation" +savedReservation.getId() + ".pdf";
+        pdfGenerator.generateItinerary(savedReservation, filepath);
+        // generate email
+        emailUtil.sendItinerary(passenger.getEmail(), filepath);
         return savedReservation;
     }
 }

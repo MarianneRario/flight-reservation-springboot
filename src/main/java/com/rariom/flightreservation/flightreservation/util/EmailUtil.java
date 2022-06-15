@@ -33,7 +33,7 @@ public class EmailUtil {
             helper.addAttachment("Itinerary", new File(filepath)); // part of "multipart"; won't be seen by the client
             sender.send(message);
         } catch (MessagingException e) {
-            throw new RuntimeException(e);
+           e.printStackTrace();
         }
 
     }

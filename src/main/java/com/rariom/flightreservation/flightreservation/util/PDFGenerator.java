@@ -18,6 +18,7 @@ public class PDFGenerator {
 
         try {
             PdfWriter.getInstance(document, new FileOutputStream(filepath));
+            document.open();
             document.add(generateTable(reservation)); // create a pdf table with 2 columns using a method
             document.close();
         } catch (Exception e) {
@@ -79,6 +80,6 @@ public class PDFGenerator {
         table.addCell("Phone");
         table.addCell(reservation.getPassenger().getPhone());
 
-        return null;
+        return table;
     }
 }
