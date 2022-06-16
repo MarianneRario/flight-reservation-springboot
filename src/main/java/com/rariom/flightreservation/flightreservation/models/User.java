@@ -1,8 +1,6 @@
 package com.rariom.flightreservation.flightreservation.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity //  specifies that the class is an entity and is mapped to a database table
@@ -13,6 +11,10 @@ public class User extends AbstractEntity{
     private String lastName;
     private String email;
     private String password;
+    @ManyToMany
+    @JoinTable(name="user_role", // table that joins the "User" and "Role" table
+            joinColumns = @JoinColumn(name="user_id"), // @JoinColumn specified the reference of the id (fk)
+            inverseJoinColumns = @JoinColumn(name = "role_id")) // inverseJoinColumns specified the other reference id (fk)
     private Set<Role> roles; // a user can have multiple roles
 
     public Set<Role> getRoles() {
