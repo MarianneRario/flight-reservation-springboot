@@ -2,6 +2,8 @@ package com.rariom.flightreservation.flightreservation.controllers;
 
 import com.rariom.flightreservation.flightreservation.models.User;
 import com.rariom.flightreservation.flightreservation.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserController {
 
+
     @Autowired
     private UserRepository userRepository; // inject this dependency in this class
 
@@ -22,6 +25,7 @@ public class UserController {
         return "login/registerUser"; // render a view (registerUser.html) inside login dir
     }
 
+    // redirected to the registration page
     @RequestMapping(path = "/registered", method = RequestMethod.POST) // we should create a card here saying that the user successfully registered
     protected String registerUser(@ModelAttribute("user") User user, ModelMap modelMap ){
         // we need a user repository to save the user in the database (inject the dependency "User Repository")
@@ -30,11 +34,14 @@ public class UserController {
 
         return "login/registerUser"; // render a view (loginUser.html) inside login dir
     }
+
+    // redirected to the login page
     @RequestMapping("/loginPage")
     protected String showLoginPage(){
         return "login/loginUser";
     }
 
+    // login user method with Logger implementation
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     protected String loginUser(@RequestParam("email") String email,
                                @RequestParam("password") String password,

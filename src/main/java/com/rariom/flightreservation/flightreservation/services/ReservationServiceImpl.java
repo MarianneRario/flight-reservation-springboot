@@ -10,8 +10,8 @@ import com.rariom.flightreservation.flightreservation.repository.ReservationRepo
 import com.rariom.flightreservation.flightreservation.util.EmailUtil;
 import com.rariom.flightreservation.flightreservation.util.PDFGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 /**
  * This class contains business logic for reservation controller
@@ -19,6 +19,8 @@ import org.springframework.stereotype.Service;
 @Component
 public class ReservationServiceImpl implements ReservationService{
 
+    @Value("${com.rariom.flightreservation.flightreservation.itinerary.dirpath}")
+    private String ITINERARY_DIR;
     // to retrieve the flight object, we need the FlightRepository
     @Autowired
     private FlightRepository flightRepository;
@@ -66,7 +68,7 @@ public class ReservationServiceImpl implements ReservationService{
         Reservation savedReservation = reservationRepository.save(reservation);
 
         // once you finished saving the reservation, generate an itinerary from savedReservation
-        String filepath = "/Users/mapletree/Desktop/ab2b/reservation_pdf/reservation" +savedReservation.getId() + ".pdf";
+        String filepath = ITINERARY_DIR + savedReservation.getId() + ".pdf";
         pdfGenerator.generateItinerary(savedReservation, filepath);
         // generate email
         emailUtil.sendItinerary(passenger.getEmail(), filepath);

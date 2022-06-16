@@ -1,5 +1,6 @@
 package com.rariom.flightreservation.flightreservation.util;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -12,9 +13,15 @@ import java.io.File;
 @Component // mark a utility class with @Component
 public class EmailUtil {
 
+    @Value("${com.rariom.flightreservation.flightreservation.itinerary.email.subject}")
+    private String ITINERARY_SUBJECT;
+    @Value("${com.rariom.flightreservation.flightreservation.itinerary.email.body}")
+    private String ITINERARY_BODY;
+
     // inject the java mail sender to send email
     @Autowired
     private JavaMailSender sender;
+
     /**
      * @param address
      * @param filepath path the generated itinerary (PDFGenerator) generates
@@ -28,8 +35,8 @@ public class EmailUtil {
             // since we have attachments we need to emphasize that multipart is "true"
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
             helper.setTo(address);
-            helper.setSubject("Itinerary for your Flight");
-            helper.setText("Please find your itinerary attached.");
+            helper.setSubject(ITINERARY_SUBJECT);
+            helper.setText(ITINERARY_BODY);
             helper.addAttachment("Itinerary", new File(filepath)); // part of "multipart"; won't be seen by the client
             sender.send(message);
         } catch (MessagingException e) {
