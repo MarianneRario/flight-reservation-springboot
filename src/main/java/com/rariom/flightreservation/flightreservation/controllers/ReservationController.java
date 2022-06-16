@@ -36,6 +36,12 @@ public class ReservationController {
 
     }
 
+    /**
+     *
+     * @param request -> this is being mapped in completeReservation.html
+     * @param modelMap
+     * @return
+     */
     @RequestMapping(value = "/completeReservation", method = RequestMethod.POST)
     protected String completeReservation(ReservationRequest request, ModelMap modelMap){
 

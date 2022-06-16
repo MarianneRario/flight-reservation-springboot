@@ -23,7 +23,7 @@ public class ReservationRESTController {
         return reservation;
     }
 
-    // we are passing ReservationUpdateRequest request (a class) because we don't want to pass the entire Reservation to this update method
+    // we are passing ReservationUpdateRequest request (class) because we don't want to pass the entire Reservation to this update method
     @RequestMapping("/reservations")
     public Reservation updateReservation(@RequestBody ReservationUpdateRequest request){
         // retrieve the reservation from the database and then perform an update

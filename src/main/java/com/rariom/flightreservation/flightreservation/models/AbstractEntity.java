@@ -10,7 +10,7 @@ import javax.persistence.MappedSuperclass;
  * will go here in AbstractEntity class.
  * All of these model classes has "id" attribute that must not be repeated even their annotations:
  *     @Id
- *     @GeneratedValue(strategy
+ *     @GeneratedValue(strategy)
  *     private Long id;
  */
 

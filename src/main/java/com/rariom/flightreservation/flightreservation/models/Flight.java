@@ -9,9 +9,10 @@ import javax.persistence.TemporalType;
 import java.sql.Timestamp;
 import java.util.Date;
 
-@Entity
+@Entity // This certain class will be mapped to database table "FLIGHT"
 public class Flight extends AbstractEntity{
 
+    // the ID will come from the extended class "AbstractEntity.java"
     private String flightNumber;
     private String operatingAirlines;
     private String departureCity;

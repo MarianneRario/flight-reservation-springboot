@@ -4,15 +4,16 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
-@Entity
+@Entity // This certain class will be mapped to database table "FLIGHT"
 public class Reservation extends AbstractEntity{
 
+    // the ID will come from the extended class "AbstractEntity.java"
     private boolean checkedIn;
     @Column(name = "NUMBER_OF_BAGS")
     private int luggageQuantity;
-    @OneToOne
+    @OneToOne // dictates that reservation and passenger has a one-to-one relationship
     private Passenger passenger; // fk relationship
-    @OneToOne
+    @OneToOne // dictates that reservation and passenger has a one-to-one relationship
     private Flight flight; // fk relationship
 
 

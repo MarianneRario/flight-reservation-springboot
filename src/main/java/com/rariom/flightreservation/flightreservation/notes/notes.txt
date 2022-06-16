@@ -14,11 +14,13 @@ so if we extend this class, we will have the fields that we implemented in here 
 The relationship between a Reservation and a Passenger and Flight is One-to-One.
 Every reservation will have a passenger and a flight
 
+<hr>
 
-
-
-
-
+@Autowired
+- Spring will create an instance of an object at runtime, and it will inject it to the variable
+e.g.
+@Autowired -> annotation that will create an instance of BCryptPasswordEncoder
+    private BCryptPasswordEncoder encoder; -> after instantiating, it will inject it to the variable name "encoder"
 
 
 

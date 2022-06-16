@@ -2,9 +2,8 @@ package com.rariom.flightreservation.flightreservation.controllers;
 
 import com.rariom.flightreservation.flightreservation.models.User;
 import com.rariom.flightreservation.flightreservation.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,12 +11,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller
+@Controller // a controller class must be annotated by @Controller
 public class UserController {
-
 
     @Autowired
     private UserRepository userRepository; // inject this dependency in this class
+
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
     // method that will display the registration page to the user
     @RequestMapping(path = "/registerPage")
@@ -26,8 +27,11 @@ public class UserController {
     }
 
     // redirected to the registration page
-    @RequestMapping(path = "/registered", method = RequestMethod.POST) // we should create a card here saying that the user successfully registered
+    // we should create a card here saying that the user successfully registered
+    @RequestMapping(path = "/registered", method = RequestMethod.POST)
     protected String registerUser(@ModelAttribute("user") User user, ModelMap modelMap ){
+        // before saving the user in the db, we must encode the password first using BCrypt password encoder
+        user.setPassword(encoder.encode(user.getPassword()));
         // we need a user repository to save the user in the database (inject the dependency "User Repository")
         userRepository.save(user);
         modelMap.addAttribute("message", "Successfully registered");

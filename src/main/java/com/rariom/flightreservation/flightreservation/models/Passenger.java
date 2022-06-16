@@ -2,9 +2,10 @@ package com.rariom.flightreservation.flightreservation.models;
 
 import javax.persistence.Entity;
 
-@Entity
+@Entity // This certain class will be mapped to database table "FLIGHT"
 public class Passenger extends AbstractEntity{
 
+    // the ID will come from the extended class "AbstractEntity.java"
     private String firstName;
     private String lastName;
     private String middleName;
