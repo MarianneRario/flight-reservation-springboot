@@ -20,7 +20,7 @@ public class FlightController {
     private FlightRepository flightRepository;
 
     @RequestMapping(value = "/findFlights", method = RequestMethod.POST)
-    public String findFlight(@RequestParam("from") String from,
+    protected String findFlight(@RequestParam("from") String from,
                              @RequestParam("to") String to,
                              @RequestParam("departureDate")
                                  @DateTimeFormat(pattern = "dd-MM-yyyy") Date departureDate,
@@ -30,5 +30,11 @@ public class FlightController {
         List<Flight> flights = flightRepository.findFlights(from, to, departureDate);
         modelMap.addAttribute("flights", flights);
         return "displayFlights"; // return the displayFlights.html view
+    }
+
+    // method that will allow the admin user to create a flight
+    @RequestMapping("/admin/showAddFlight")
+    protected String showAddFlight(){
+        return "addFlight";
     }
 }
